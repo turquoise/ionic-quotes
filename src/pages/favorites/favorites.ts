@@ -33,8 +33,16 @@ export class FavoritesPage {
   onViewQuote(selectedQuote: Quote) {
     const modal = this.modalController.create(QuotePage, selectedQuote);
     modal.present();
-    modal._onDidDismiss( (remove: boolean) => {
-      
+    modal.onDidDismiss( (remove: boolean) => {
+      //console.log(remove);
+      if (remove) {
+        this.quotesService.removeQuoteFromFavorites(selectedQuote);
+        this.quotes = this.quotesService.getFavoriteQuotes();
+        // const position = this.quotes.findIndex( (quoteEl: Quote) => {
+        // return quoteEl.id == quote.id;
+      //});
+      // this.quotes.splice(position, 1);
+      }
     });
 
   }

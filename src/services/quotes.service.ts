@@ -21,4 +21,11 @@ export class QuotesService {
     return this.favoriteQuotes.slice();
   }
 
+  isQuoteFavorite(quote: Quote) {
+    return this.favoriteQuotes.find( (quoteEl: Quote) => {
+      return quoteEl.id == quote.id;
+    });
+
+  }
+
 }
